@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         //membuat fungsi onclik pada button btnLogin
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
                 //menyimpan input user di edittext email kedalam variabel nama
                 nama = edemail.getText().toString();
@@ -44,22 +44,37 @@ public class MainActivity extends AppCompatActivity {
                 //menyimpan input user di edittext password kedalam variabel password
                 password = edpassword.getText().toString();
 
-                //membuat variabel toast dan membuat toast dengan menambahkan variabel nama dan password
-                Toast a = Toast.makeText(getApplicationContext(),
-                        "Login Sukses",Toast.LENGTH_LONG);
-                Toast b = Toast.makeText(getApplicationContext(),
-                        "Password Salah",Toast.LENGTH_LONG);
-                Toast c = Toast.makeText(getApplicationContext(),
-                        "Email Salah",Toast.LENGTH_LONG);
-                Toast d = Toast.makeText(getApplicationContext(),
-                        "Email dan Password salah",Toast.LENGTH_LONG);
+                String email = "Ican@gmail.com";
+                String pwd = "Ican123";
 
-                a.show();
-                b.show();
-                c.show();
-                d.show();
+                if (nama.isEmpty() || password.isEmpty()){
+                    Toast t = Toast.makeText(getApplicationContext(),
+                            "Email dan Password wajib diisi", Toast.LENGTH_LONG);
+                    t.show();
+                }
+                else {
+
+                    if (nama.equals(email) && password.equals(pwd)) {
+                        Toast t = Toast.makeText(getApplicationContext(), "Login Sukses",
+                                Toast.LENGTH_LONG);
+                        t.show();
+
+                        Bundle b = new Bundle();
+
+                        b.putString("a", nama.trim());
+
+                        b.putString("b", password.trim());
+
+                        Intent intent = new Intent(getApplicationContext(), ActivityKedua.class);
+
+                        intent.putExtras(b);
+                        startActivity(intent);
+
+                } else {
+                    Toast t = Toast.makeText(getApplicationContext(),
+                            "Login Gagal", Toast.LENGTH_LONG);
+                    t.show();
+                }
             }
-        });
-    }
-
-}
+        }
+    });}}
