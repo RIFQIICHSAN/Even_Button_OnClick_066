@@ -17,7 +17,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.202"
-        app:srcCompat="@drawable/loginn" />
+        app:srcCompat="@drawable/login" />
 
     <EditText
         android:id="@+id/edEmail"
